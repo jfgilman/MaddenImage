@@ -1,0 +1,57 @@
+Formation,Set,Name,FormNum,SetNum,Button,Number
+3-Apr,Under,FS FIRE 3,1,1,Y,78
+3-Apr,Under,WK CORNER BLITZ,1,1,X,79
+3-Apr,Under,COVER 2 MAN,1,1,A,80
+3-Apr,Normal,TAMPA 2,1,2,Y,81
+3-Apr,Normal,AGGIE CLOUD STAR,1,2,X,82
+3-Apr,Normal,2 DEEP GAP SHOOT,1,2,A,83
+Nickel,Normal,COVER 3 SKY,5,1,Y,84
+Nickel,Normal,UNDER SMOKE,5,1,X,85
+Nickel,Normal,COVER 6,5,1,A,86
+Nickel,"""2-4-5""",SS OVERLOAD 3,5,2,Y,87
+Nickel,"""2-4-5""",NICKEL BLITZ 2,5,2,X,88
+Nickel,"""2-4-5""",COVER 1 ROBBER,5,2,A,89
+Quarter,3 Deep,MAN UP 3 DEEP,2,2,Y,90
+Quarter,3 Deep,PREVENT,2,2,X,91
+Quarter,3 Deep,COVER 3,2,2,A,92
+Quarter,Normal,COVER 4 DROP,2,1,Y,93
+Quarter,Normal,COVER 1 THIEF,2,1,X,94
+Quarter,Normal,FZ 3 SKY,2,1,A,95
+Goal Line Defense,"""5-4-2""",SAM BLITZ,7,1,Y,96
+Goal Line Defense,"""5-4-2""",BLITZ A,7,1,X,97
+Goal Line Defense,"""5-4-2""",BLITZ C,7,1,A,98
+Goal Line Defense,"""5-3-3""",60 DOUBLE BLITZ,7,2,Y,99
+Goal Line Defense,"""5-3-3""",GAPS ALL,7,2,X,100
+Goal Line Defense,"""5-3-3""",GL MAN,7,2,A,101
+4-Mar,Bear,ENGAGE EIGHT,4,1,Y,102
+4-Mar,Bear,PINCH DOG 3,4,1,A,103
+4-Mar,Bear,SAM MIKE 1,4,1,X,104
+4-Mar,Odd,STORM BRAVE 1,4,2,Y,105
+4-Mar,Odd,COVER 3 CLOUD,4,2,X,106
+4-Mar,Odd,COVER 3 BUZZ BUCK,4,2,A,107
+46,Bear Under,LB DOGS,3,1,Y,108
+46,Bear Under,DOGS 2 FIRE,3,1,X,109
+46,Bear Under,GAP PRESS,3,1,A,110
+46,Normal,RUSH OUTSIDE,3,2,Y,111
+46,Normal,ZONE BLITZ,3,2,X,112
+46,Normal,COVER 3 MATCH,3,2,A,113
+Dime,"""2-3-6""",COVER 1 ROBBER SHOW 2,6,1,Y,114
+Dime,"""2-3-6""",BUCK SLANT 3,6,1,X,115
+Dime,"""2-3-6""",PROWL SLANT 3 SEAM,6,1,A,116
+Dime,"""1-4-6""",OKIE ROLL 2,6,2,Y,117
+Dime,"""1-4-6""",MIKE SS 1 DOG,6,2,X,118
+Dime,"""1-4-6""",DBL SAFETY GO,6,2,A,119
+Special Teams,FG Block Right,Base,8,1,Y,120
+Special Teams,FG Block Right,Load,8,1,X,121
+Special Teams,FG Block Right,Safe,8,1,A,122
+Special Teams,FG Block Left,Base,8,2,Y,123
+Special Teams,FG Block Left,Load,8,2,X,124
+Special Teams,FG Block Left,Safe,8,2,A,125
+Special Teams,FG Block Return,FG Block Return,8,3,Y,126
+Special Teams,PR 33 Even,PR Left,8,4,Y,127
+Special Teams,PR 33 Even,PR Mid,8,4,X,128
+Special Teams,PR 33 Even,PR Right,8,4,A,129
+Special Teams,PR Block 44 Even,Striaght Rush,8,5,Y,130
+Special Teams,PR Block 44 Even,Squeeze Block,8,5,X,131
+Special Teams,PR Block 44 Even,8 Up Safe Man,8,5,A,132
+Special Teams,PR Safe,Punt Safe Man,8,6,Y,133
