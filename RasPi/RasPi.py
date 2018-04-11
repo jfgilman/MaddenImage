@@ -255,3 +255,15 @@ class RasPi(object):
         time.sleep(2)
         self.send("Press A")
         time.sleep(15)
+
+    def awayStartup(self):
+        self.send("Press A")
+        time.sleep(1)
+        self.send("Press A")
+
+    def homeStartup(self):
+        self.send("Press A")
+        time.sleep(1)
+        self.send("Press A")
+        time.sleep(10)
+        self.send("Press A")
