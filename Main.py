@@ -23,7 +23,7 @@ def twoPlayer(home_ip, away_ip, from_scratch):
     game_count = 0
 
     while True:
-        formations2Player.play(home_pi, away_pi, controller)
+        formations2Player.play(home_pi, away_pi, controller, monitor)
 
         game_count += 1
 
@@ -43,7 +43,7 @@ def onePlayer(home_ip, from_scratch):
     game_count = 0
 
     while True:
-        formations1Player.play(home_pi, controller)
+        formations1Player.play(home_pi, controller, monitor)
 
         game_count += 1
 
