@@ -1,10 +1,12 @@
 import socket
 import time
 
-formations = {"34": 4, "43": 1, "46": 3, "dime": 6, "goallined": 7, "nickel": 5,
-              "quarter": 2, "speciald": 8, "singleback": 1, "strong": 2,
-              "weak": 3, "pistol": 4, "iform": 5, "gun": 6, "hailmary": 7,
-              "goallineo": 8, "specialo": 9}
+
+formations = {"34": 4, "43": 1, "46": 3, "dime": 6, "goallined": 7,
+              "nickel": 5, "quarter": 2, "speciald": 8, "singleback": 1,
+              "strong": 2, "weak": 3, "pistol": 4, "iform": 5, "gun": 6,
+              "hailmary": 7, "goallineo": 8, "specialo": 9}
+
 
 class RasPi(object):
     """
@@ -65,7 +67,6 @@ class RasPi(object):
             self.send("Press A")
             time.sleep(13)
             self.send("Press A")
-            #print("SNAP")
         elif playType == "defense":
             self.send("Press A")
             time.sleep(13)
