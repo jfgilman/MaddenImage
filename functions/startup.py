@@ -1,7 +1,9 @@
 import sys
 import Controller as C
 
+
 def getInfo():
+    """ Gathers information about the game from the user """
     num_players = input("Number of players: ")
 
     if num_players not in ("1", "2"):
@@ -72,7 +74,7 @@ def getInfo():
         monitor = "3"
 
     from_scratch = input("Currently on play now screen? ")
-    if from_scratch.lower() not in ("y", "n"):
+    if from_scratch not in ("y", "n"):
         sys.exit("Please give a valid answer.")
 
     num_games = 100
