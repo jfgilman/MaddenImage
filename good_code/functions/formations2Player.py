@@ -3,13 +3,12 @@ import sys
 import img
 import time
 
-# TODO   line 12  : actual model needs to be loaded
 # TODO end of file: action sequence needs to be written
 
 
 def play(home_pi, away_pi, controller, monitor, difficulty):
-    # Load screen type model that give "other","playcall","kickoff",or"endgame"
-    screen_type_model = None
+    screen_type_path = "ScreenId/finalized_screenID_model.sav"
+    screen_type_model = pickle.load(open(screen_type_path))
 
     with mss.mss() as sct:
         if monitor == "1":
@@ -25,7 +24,7 @@ def play(home_pi, away_pi, controller, monitor, difficulty):
         screen_type = "other"
 
         while screen_type == "other":
-            frame = img.prepFrame(sct, monitor, gray = True)
+            frame = img.prepFrame(sct, monitor)
 
             if frame == "Bad Frame":
                 continue
@@ -37,7 +36,7 @@ def play(home_pi, away_pi, controller, monitor, difficulty):
                 return None
 
             if screen_check_1 != "other":
-                frame_2 = img.prepFrame(sct, monitor, gray = True)
+                frame_2 = img.prepFrame(sct, monitor)
 
                 screen_check_2 = img.getPrediction(frame_2, screen_type_model)
 
@@ -51,3 +50,5 @@ def play(home_pi, away_pi, controller, monitor, difficulty):
             time.sleep(7)
             pi.kick("center", difficulty)
             continue
+
+        # Identify team on offense and team on defense

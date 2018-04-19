@@ -13,3 +13,15 @@ def prepFrame(sct, monitor, gray = False):
             return "Bad Frame"
     else:
         return frame
+
+def identifyOffense(frame):
+    away_slice = frame[650:680, 70:520]
+    home_slice = frame[650:680, 675:1125]
+
+    away_sum = sum(away_slice.flatten())
+    home_sum = sum(home_slice.flatten())
+
+    if away_sum > home_sum:
+        return "defense"
+    else:
+        return "offense"
