@@ -72,7 +72,7 @@ class RasPi(object):
             time.sleep(13)
             self.send("Press A")
 
-    def callPlay(self, currentForm, formNum, setNum, button, playType):
+    def callPlay(self, currentForm, formNum, setNum, button, playType, flip):
         """
         Execute the button sequence to call the correct playCall
 
@@ -102,6 +102,9 @@ class RasPi(object):
             time.sleep(0.5)
         self.send("Press A")
         time.sleep(1.5)
+        if flip == 1:
+            self.send("Press Y")
+            time.sleep(1)
         self.send("Press " + button)
         # if playType == "offense":
         #     #self.send("Press A")
