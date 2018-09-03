@@ -102,10 +102,10 @@ def getInfo():
             sys.exit("Please give a valid answer. (1, 2, 3, or 4)")
 
         controller = input("Controller: \n 1 for askMadden \n 2 for Random" +
-                           "\n 3 for Random Texan")
+                           "\n 3 for Random Texan \n 3 for Random Colt")
 
         if controller not in ("1", "2", "3"):
-            sys.exit("Please give a valid answer. (1, 2, or 3)")
+            sys.exit("Please give a valid answer. (1, 2, 3, or 4)")
 
 
         bottomMonitor = input("Play on bottom monitor: (y/n): ")
@@ -135,6 +135,8 @@ def getInfo():
         controller = C.randomPlay()
     elif controller == "3":
         controller = C.randomTexan()
+    elif controller == "4":
+        controller = C.randomColt()
 
     if fromScratch.lower() == "y":
         fromScratch = True

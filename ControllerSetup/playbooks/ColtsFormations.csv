@@ -1,0 +1,32 @@
+Formation,Set,Form Num,Set Num
+Singleback,Jumbo Z,1,1
+Singleback,Ace,1,2
+Singleback,Deuce Close,1,3
+Singleback,Ace Pair,1,4
+Singleback,Pair Tight Twins,1,5
+Singleback,Bunch Ace,1,6
+Singleback,Doubles,1,7
+Singleback,Y-Trips TE Slot,1,8
+Singleback,Wing Trips Open,1,9
+I-Form,Pro,2,1
+I-Form,Twins Flex,2,2
+I-Form,Tight,2,3
+I-Form,Tight Pair,2,4
+Strong,Pro,3,1
+Strong,Twins Flex,3,2
+Strong,Tight Pair,3,3
+Weak,Pro,4,1
+Pistol,Slot Wing,5,1
+Pistol,Y-Trips,5,2
+Gun,Split Close,6,1
+Gun,Doubles,6,2
+Gun,Y-Trips HB WK,6,3
+Gun,Bunch TE,6,4
+Gun,Bunch WK,6,5
+Gun,Snugs Flip,6,6
+Gun,Double Flex,6,7
+Gun,Y-Trips Opejn,6,8
+Gun,Trey Open,6,9
+Gun,Empty Trey,6,10
+Gun,Empty Trey Flex,6,11
+Goalline,Normal,7,1
