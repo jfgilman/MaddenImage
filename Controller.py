@@ -13,8 +13,8 @@ warnings.filterwarnings("ignore")
 dfOffPlaybook = pd.read_csv("C:/Temp/Madden/ControllerSetup/playbooks/offPlaybook2.csv")
 dfDefPlaybook = pd.read_csv("C:/Temp/Madden/ControllerSetup/playbooks/defPlaybook.csv")
 
-dfTexanPlaybook = pd.read_csv("C:/Temp/Madden/ControllerSetup/playbooks/TexansFormations.csv")
-dfColtPlaybook = pd.read_csv("C:/Temp/Madden/ControllerSetup/playbooks/ColtsFormations.csv")
+dfTexanPlaybook = pd.read_csv("C:/Temp/MaddenImage/ControllerSetup/playbooks/TexansFormations.csv")
+dfColtPlaybook = pd.read_csv("C:/Temp/MaddenImage/ControllerSetup/playbooks/ColtsFormations.csv")
 
 
 # will be the abstract controller class
@@ -22,7 +22,7 @@ class Controller(object):
     """Uses the game information to determine playcall."""
 
     def getPlayCall(self, game):
-        raise NotImplementedError('abstract')
+         raise NotImplementedError('abstract')
 
 
 # This class should probably be in its own file
