@@ -125,7 +125,7 @@ class randomJag(Controller):
     def getPlayCall(self, gameState):
 
         if gameState['HomeOnOff']:
-            play = dfJagPlaybook.loc[randint(0, 27)]
+            play = dfJagPlaybook.loc[randint(0, 26)]
             button = "A"
             setNum = play.SetNum
             formNum = play.FormNum
