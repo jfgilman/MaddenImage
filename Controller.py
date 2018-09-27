@@ -15,6 +15,7 @@ dfDefPlaybook = pd.read_csv("C:/Temp/Madden/ControllerSetup/playbooks/defPlayboo
 
 dfTexanPlaybook = pd.read_csv("C:/Temp/MaddenImage/ControllerSetup/playbooks/TexansFormations.csv")
 dfColtPlaybook = pd.read_csv("C:/Temp/MaddenImage/ControllerSetup/playbooks/ColtsFormations.csv")
+dfJagPlaybook = pd.read_csv("C:/Temp/MaddenImage/ControllerSetup/playbooks/JagsFormations.csv")
 
 
 # will be the abstract controller class
@@ -100,6 +101,31 @@ class randomColt(Controller):
 
         if gameState['HomeOnOff']:
             play = dfColtPlaybook.loc[randint(0, 30)]
+            button = "A"
+            setNum = play.SetNum
+            formNum = play.FormNum
+            playName = "Texan"
+            flip = randint(0,1)
+            number = None
+        else:
+            play = dfDefPlaybook.loc[randint(0, 42)]
+
+            button = play.Button
+            setNum = play.SetNum
+            formNum = play.FormNum
+            playName = play.Name
+            number = play.Number
+            flip = None
+
+        return playName, formNum, setNum, button, number, flip
+
+class randomJag(Controller):
+    """Random play call controller."""
+
+    def getPlayCall(self, gameState):
+
+        if gameState['HomeOnOff']:
+            play = dfJagPlaybook.loc[randint(0, 27)]
             button = "A"
             setNum = play.SetNum
             formNum = play.FormNum
