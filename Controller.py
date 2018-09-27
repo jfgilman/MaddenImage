@@ -99,7 +99,7 @@ class randomColt(Controller):
     def getPlayCall(self, gameState):
 
         if gameState['HomeOnOff']:
-            play = dfColtPlaybook.loc[randint(0, 31)]
+            play = dfColtPlaybook.loc[randint(0, 30)]
             button = "A"
             setNum = play.SetNum
             formNum = play.FormNum
