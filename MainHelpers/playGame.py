@@ -152,6 +152,22 @@ def play(pi, game, controller, bottomMonitor):
                 game.updateOffPersonnel(personnel)
 
 
+            fn.otherReset(sct, monitor, pi)
+            newFrame = fn.prepFrame(sct, monitor)
+            newGray = fn.grayFrame(newFrame)
+            newScreenType = fn.getScreenType(newGray, screenTypeModel)
+
+            if newScreenType == "offense":
+                game.updateHomeBall2(True, trueFrame, game.state['AwayTOR'])
+                personnel = "NICK"
+                game.updateOffPersonnel(personnel)
+            else:
+                game.updateHomeBall2(False, trueFrame, game.state['AwayTOR'])
+                trueGray = fn.grayFrame(trueFrame)
+                personnel = fn.getScreenType(trueGray[660:690, 175:280], personnelModel)
+                game.updateOffPersonnel(personnel)
+
+
             # if clockRunning:
             #     if tof.callTimeout(game.state):
             #         pi.callTimeout()
@@ -279,7 +295,7 @@ def play(pi, game, controller, bottomMonitor):
                     # formFrame = fn.grayFrame(formFrame)
                     # formFrame = formFrame[120:660, 675:980]
                     #print(game.homeBall)
-                    if game.homeBall:
+                    if game.homeBall2:
                         currentForm = "singleback"
                         # currentForm = fn.getScreenType(formFrame, offFormModel)
                     else:
@@ -287,12 +303,12 @@ def play(pi, game, controller, bottomMonitor):
                         # currentForm = fn.getScreenType(formFrame, defFormModel)
 
                     pi.callPlay(currentForm, fNum, sNum, button, screenType, flip)
-                    if game.homeBall:
+                    if game.homeball2:
                         time.sleep(8)
                         #formationSnap(fNum, sNum, True, sct, monitor)
                         time.sleep(1)
                         formationFrame = fn.prepFrame(sct, monitor)
-                        formationPath = "C://Temp/MaddenImage/ScreenStuff/images/formationImages/" + str(fNum) + "_" + str(sNum) + "_" + str(flip) + "_" + str(random.randint(0, 10000)) + ".png"
+                        formationPath = "C://Temp/MaddenImage/ScreenStuff/images/formationImages/" + str(fNum) + "_" + str(sNum) + "_" + str(flip) + "_" + str(random.randint(0, 100000000)) + ".png"
                         cv2.imwrite(formationPath, formationFrame)
                         time.sleep(5)
                         pi.send("Press A")

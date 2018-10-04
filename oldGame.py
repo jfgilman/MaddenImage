@@ -61,11 +61,9 @@ class Game(object):
     playNum = None
     timeSinceLastCall = 0
     timeOfLastCall = None
-    homeball2 = None
-    singleback = None
     df = pd.DataFrame(columns=['Start_Time', 'Home_Score', 'Away_Score',
                                'Home_TO_Remain', 'Away_TO_Remain', 'Quarter',
-                               'Time_Remain', 'Home_Ball', 'Home_Ball2', 'Singleback', 'Down', 'Distance',
+                               'Time_Remain', 'Home_Ball', 'Down', 'Distance',
                                'Yards_To_Endzone', 'Offense_Personnel',
                                'Play_Call', 'Form_Num', 'Set_Num', 'Button',
                                'Play_Num', 'Win_Prob', 'Point_Spread',
@@ -98,15 +96,15 @@ class Game(object):
         return self.raitings[self.homeTeam] - self.raitings[self.awayTeam]
 
     def updateState(self, frame):
-        self.updateQuarter(frame)
-        self.updateScore(frame)
-        self.updateField(frame)
+        #self.updateQuarter(frame)
+        #self.updateScore(frame)
+        #self.updateField(frame)
         self.updateAwayTO(frame)
 
-        if self.state['YTEZ'] != -1 and self.state['distance'] != -1 and self.state['down'] != -1 and self.state['quarter'] != -1 and self.state['secsLeft'] != -1:
-            self.updateWinProb()
-        else:
-            self.state['winProb'] = None
+        # if self.state['YTEZ'] != -1 and self.state['distance'] != -1 and self.state['down'] != -1 and self.state['quarter'] != -1 and self.state['secsLeft'] != -1:
+        #     self.updateWinProb()
+        # else:
+        #     self.state['winProb'] = None
 
     def updateOffPersonnel(self, personnel):
         self.state['offPersonel'] = personnel
@@ -118,21 +116,18 @@ class Game(object):
         HomeNewScore = getHomeScore(frame, self.CPUID)
         AwayNewScore = getAwayScore(frame, self.CPUID)
 
-        self.state['homeScore'] = HomeNewScore
-        self.state['awayScore'] = AwayNewScore
+        try:
+            if HomeOldScore is not None and (HomeNewScore == -1 or HomeNewScore > HomeOldScore + 8 or HomeNewScore < HomeOldScore) and quarter > 1:
+                self.state['homeScore'] = HomeOldScore
+            else:
+                self.state['homeScore'] = HomeNewScore
 
-        # try:
-        #     if HomeOldScore is not None: # and (HomeNewScore == -1 or HomeNewScore > HomeOldScore + 8 or HomeNewScore < HomeOldScore) and quarter > 1:
-        #         self.state['homeScore'] = HomeOldScore
-        #     else:
-        #         self.state['homeScore'] = HomeNewScore
-        #
-        #     if AwayOldScore is not None: #and (AwayNewScore == -1 or AwayNewScore > AwayOldScore + 8 or AwayNewScore < AwayOldScore) and quarter > 1:
-        #         self.state['awayScore'] = AwayOldScore
-        #     else:
-        #         self.state['awayScore'] = AwayNewScore
-        # except:
-        #     pass
+            if AwayOldScore is not None and (AwayNewScore == -1 or AwayNewScore > AwayOldScore + 8 or AwayNewScore < AwayOldScore) and quarter > 1:
+                self.state['awayScore'] = AwayOldScore
+            else:
+                self.state['awayScore'] = AwayNewScore
+        except:
+            pass
 
     def updateQuarter(self, frame):
         gray2 = cv2.cvtColor(frame[25:65, 710:760], cv2.COLOR_BGR2GRAY)
@@ -154,15 +149,15 @@ class Game(object):
         else:
             newQuarter = -1
 
-#         if oldQuarter is not None:
-#             if newQuarter == 3 and oldQuarter == 4:
-#                 self.state['quarter'] = 4
-#             elif newQuarter == 3 and oldQuarter == 1:
-#                 self.state['quarter'] = 1
-#             else:
-#                 self.state['quarter'] = newQuarter
-#         else:
-        self.state['quarter'] = newQuarter
+        if oldQuarter is not None:
+            if newQuarter == 3 and oldQuarter == 4:
+                self.state['quarter'] = 4
+            elif newQuarter == 3 and oldQuarter == 1:
+                self.state['quarter'] = 1
+            else:
+                self.state['quarter'] = newQuarter
+        else:
+            self.state['quarter'] = newQuarter
 
         if oldQuarter == None:
             oldQuarter = 1
@@ -177,10 +172,10 @@ class Game(object):
         if oldTime == None:
             oldTime = 480
         timeRemaining = getTime(frame, self.CPUID)
-#         if timeRemaining - oldTime < -100 or timeRemaining == -1:
-#             self.state['secsLeft'] = oldTime - 5
-#         else:
-        self.state['secsLeft'] = timeRemaining
+        if timeRemaining - oldTime < -100 or timeRemaining == -1:
+            self.state['secsLeft'] = oldTime - 5
+        else:
+            self.state['secsLeft'] = timeRemaining
 
     def updateField(self, frame):
         gray1 = cv2.cvtColor(frame[25:65, 250:300], cv2.COLOR_BGR2GRAY)
@@ -289,17 +284,6 @@ class Game(object):
 
         self.state['HomeOnOff'] = self.homeBall
 
-    def updateHomeBall2(self, homeBall, frame, oldAwayTO):
-        awayTO = self.updateAwayTO(frame)
-        if (self.playNum == 71 or self.playNum == 68) and (oldAwayTO == awayTO):
-            self.homeBall = False
-        else:
-            self.homeBall = homeBall
-
-        self.homeball2 = self.homeBall
-        self.state['HomeOnOff'] = self.homeball2
-        print(self.homeball2)
-
     def appendData(self):
         """
         Append pandas dataframe with current state information.
@@ -312,8 +296,6 @@ class Game(object):
                                self.state['awayScore'], self.state['HomeTOR'],
                                self.state['AwayTOR'], self.state['quarter'],
                                self.state['secsLeft'], self.state['HomeOnOff'],
-                               self.homeball2,
-                               self.singleback,
                                self.state['down'], self.state['distance'],
                                self.state['YTEZ'], self.state['offPersonel'],
                                self.playName,
@@ -387,6 +369,3 @@ class Game(object):
                 return -ep
         except:
             return -1
-
-    def getDown(self):
-        return self.state['down']
